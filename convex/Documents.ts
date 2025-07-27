@@ -70,56 +70,30 @@ export const get = query({
   },
 });
 
-export const getById = query({
-  args: { id: v.id("documents") },
-  handler: async (ctx, args) => {
-    const User = await ctx.auth.getUserIdentity();
-
-    if (!User) {
-      throw new ConvexError("Unauthorized");
-    }
-
-    const document = await ctx.db.get(args.id);
-    const organizationId = (User.organization_id ?? undefined) as string | undefined;
-
-    if (!document) {
-      throw new ConvexError("Document not found");
-    }
-
-    const isOwner = document.ownerId === User.subject;
-    const isOrganizationMember = document.organizationId === organizationId;
-
-    if (!isOwner && !isOrganizationMember) {
-      throw new ConvexError("Unauthorized: You are not the owner or a member of this document's organization");
-    }
-
-    return document;
-  }
-})
 
 export const removeById = mutation({
   args: { id: v.id("documents") },
   handler: async (ctx, args) => {
     const User = await ctx.auth.getUserIdentity();
-
+    
     if (!User) {
       throw new ConvexError("Unauthorized");
     }
-
+    
     const document = await ctx.db.get(args.id);
     const organizationId = (User.organization_id ?? undefined) as | string | undefined;
-
+    
     if (!document) {
       throw new ConvexError("Document not found");
     }
-
+    
     const isOwner = document.ownerId === User.subject;
-    const isOrganizationMember = document.organizationId === organizationId;
-
+    const isOrganizationMember = !!(document.organizationId && document.organizationId === organizationId)
+    
     if (!isOwner && !isOrganizationMember) {
       throw new ConvexError("Unauthorized: You are not the owner or a member of this document's organization");
     }
-
+    
     await ctx.db.delete(args.id);
   }
 })
@@ -128,26 +102,34 @@ export const updateById = mutation({
   args: { id: v.id("documents") , title: v.string()},
   handler: async (ctx, args) => {
     const User = await ctx.auth.getUserIdentity();
-
+    
     if (!User) {
       throw new ConvexError("Unauthorized");
     }
-
+    
     const document = await ctx.db.get(args.id);
-
+    
     const organizationId = (User.organization_id ?? undefined) as | string | undefined;
-
+    
     if (!document) {
       throw new ConvexError("Document not found");
     }
-
+    
     const isOwner = document.ownerId === User.subject;
-    const isOrganizationMember = document.organizationId === organizationId;
-
+    const isOrganizationMember =  !!(document.organizationId && document.organizationId === organizationId);
+    
     if (!isOwner && !isOrganizationMember) {
       throw new ConvexError("Unauthorized: You are not the owner of this document");
     }
-
+    
     await ctx.db.patch(args.id, { title: args.title });
+  }
+})
+
+export const getById = query({
+  args: { id: v.id("documents") },
+  handler: async (ctx, {id}) => {
+    
+    return await ctx.db.get(id);
   }
 })
