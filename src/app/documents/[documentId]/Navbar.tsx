@@ -19,6 +19,7 @@ import { useEditorStore } from '@/Store/Use-editor-store'
 import { blob } from 'stream/consumers'
 import { Content } from 'next/font/google'
 import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
+// import { Avatars } from './avatars' 
 
 
 
@@ -218,6 +219,7 @@ export const Navbar = () => {
             </div>
         </div>
         <div className="flex items-center gap-3 pl-6">
+        {/* <Avatars/>  */}
         <OrganizationSwitcher 
           afterCreateOrganizationUrl="/"
           afterLeaveOrganizationUrl="/"

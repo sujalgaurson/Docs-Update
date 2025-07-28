@@ -3,7 +3,7 @@ export const templates = [
     { 
         id: "blank",
         label:'Blank Documents',
-        imageUrl: './blank-document.svg' 
+        imageUrl: './blank-document.svg',
     },
     { 
         id: "software-proposal",
