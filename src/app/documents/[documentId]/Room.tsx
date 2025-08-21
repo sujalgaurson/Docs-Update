@@ -38,9 +38,9 @@ export function Room({ children }: { children: ReactNode }) {
     // },[fetchUsers])
     
   return (
-    <LiveblocksProvider publicApiKey={"pk_dev_VtQCjaV_qiTXWhRAKz3a0LLrf-dFi2Pirf6HTHG7O8Q6ByyTW9VWfXtNRUrM5WZE"}
-    // authEndpoint={"/api/liveblocks-auth"} 
-    // throttle={16} 
+    <LiveblocksProvider 
+    authEndpoint={"/api/liveblocks-auth"} 
+    throttle={16} 
 
     // resolveUsers={({userIds})=>{
     //   return userIds.map(

@@ -1,7 +1,7 @@
 "use client"
 
 import { useLiveblocksExtension, FloatingToolbar } from "@liveblocks/react-tiptap";
-import { Threads } from "../../Threads";
+import { Threads } from "./Threads";
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import TaskItem from '@tiptap/extension-task-item'
