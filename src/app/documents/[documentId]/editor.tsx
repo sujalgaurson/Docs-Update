@@ -20,6 +20,7 @@ import TextStyle from '@tiptap/extension-text-style'
 import Highlight from '@tiptap/extension-highlight'
 import Link from '@tiptap/extension-link'
 import TextAlign from '@tiptap/extension-text-align'
+import { useStorage } from "@liveblocks/react";
 
 import { Ruler } from './Ruler'
 
@@ -28,12 +29,14 @@ import { FontSizeExtension } from '@/extensions/Font-size'
 import { LineHeightExtension } from '@/extensions/Line-height'
 
 export const Editor = () =>{
-
+    const leftMargin = useStorage((root)=>root.leftMargin);
+    const rightMargin = useStorage((root)=>root.rightMargin);
     const liveblocks = useLiveblocksExtension();
 
     const { setEditor } = useEditorStore();
 
 const editor = useEditor({
+    autofocus: true,
     immediatelyRender: false,
     onCreate: ({ editor }) => {
         setEditor(editor);
@@ -61,7 +64,7 @@ const editor = useEditor({
     },
     editorProps:{
         attributes:{
-            style: "padding-left: 56px; padding-right: 56px;",
+            style: `padding-left: ${ leftMargin ?? 56 }px; padding-right: ${ rightMargin ?? 56 }px;`,
             class:"focus:outline-none print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] w-[816px] pt-10 pr-10 pb-10 " 
         },
     },
