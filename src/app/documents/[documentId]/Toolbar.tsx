@@ -4,7 +4,7 @@ import { AlignCenterIcon, AlignJustifyIcon, AlignLeftIcon, AlignRightIcon, BoldI
 import React, { useState } from 'react'
 import { useEditorStore } from '@/Store/Use-editor-store';
 import { Separator } from '@/components/ui/separator';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Label } from '@radix-ui/react-dropdown-menu'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu'
 import { type Level } from '@tiptap/extension-heading';
 import { type ColorResult, CirclePicker, SketchPicker} from 'react-color';
 import { Button } from '@/components/ui/button';
@@ -373,7 +373,7 @@ const LinkButton = () => {
 const HighlightButton = () => {
     const { editor } = useEditorStore();
 
-    const value = editor?.getAttributes("highlight").color || "#FFFFFFFF";
+    // const value = editor?.getAttributes("highlight").color || "#FFFFFFFF"; 
 
     const onChange = (color: ColorResult) => {
         editor?.chain().focus().setHighlight({color: color.hex}).run();

@@ -5,7 +5,6 @@ import { useSearchParams } from '../../hooks/use-search-params'
 import { api } from '../../../convex/_generated/api'
 import {Navbar} from './Navbar'
 import { TemplateGallery } from './TemplateGallery'
-import { FullscreenLoader } from '@/components/Fullscreen-loader'
 import { DocumentTable } from './documents-table'
 
 // ✅ Change 'page' to 'Page' (capitalized)

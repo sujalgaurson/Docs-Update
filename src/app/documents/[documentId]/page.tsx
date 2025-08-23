@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
 import { Editor } from './editor';
 import { Toolbar } from './Toolbar';
@@ -9,7 +10,7 @@ interface DocumentIdPageProps {
 }
 
 const DocumentIdPage = async ({ params }: DocumentIdPageProps) => {
-  const { documentId } = await params;
+  const { documentId } = await params; 
   
   return (
   <Room>

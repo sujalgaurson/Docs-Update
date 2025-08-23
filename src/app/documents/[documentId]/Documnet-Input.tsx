@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { BsCloudCheck } from 'react-icons/bs'
 import { Doc } from '../../../../convex/_generated/dataModel';
 

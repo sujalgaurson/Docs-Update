@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 import Image from 'next/image'
 import Link from 'next/link'
@@ -13,11 +14,9 @@ import {
   MenubarTrigger,
 } from '@/components/ui/menubar'
 import { MenubarSub, MenubarSubContent, MenubarSubTrigger } from '@radix-ui/react-menubar'
-import { FileJson2Icon, FilePenIcon, FilePlus2, FileTextIcon, Globe2Icon, GlobeIcon, PrinterIcon, Redo2Icon, RemoveFormattingIcon, SaveIcon, Table2, TextIcon, Trash2Icon, UndoIcon } from 'lucide-react'
+import { FileJson2Icon, FilePenIcon, FilePlus2, FileTextIcon, GlobeIcon, PrinterIcon, Redo2Icon, RemoveFormattingIcon, SaveIcon, Table2, TextIcon, Trash2Icon, UndoIcon } from 'lucide-react'
 import { BsFilePdf } from 'react-icons/bs'
 import { useEditorStore } from '@/Store/Use-editor-store'
-import { blob } from 'stream/consumers'
-import { Content } from 'next/font/google'
 import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
 // import { Avatars } from './avatars' 
 
