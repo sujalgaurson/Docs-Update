@@ -5,9 +5,15 @@ import { api } from "../../../../convex/_generated/api";
 
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
+if (!process.env.LIVEBLOCKS_SECRET_KEY) {
+    throw new Error("LIVEBLOCKS_SECRET_KEY is not set");
+}
+
 const liveblocks = new Liveblocks({
     secret: process.env.LIVEBLOCKS_SECRET_KEY!,
 })
+
+
 
 export async function POST(req: Request) {
     const { sessionClaims } = await auth();
