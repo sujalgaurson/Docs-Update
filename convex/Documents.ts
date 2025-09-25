@@ -8,7 +8,7 @@ export const create = mutation({
     const User = await ctx.auth.getUserIdentity();
 
     if (!User) {
-      throw new ConvexError("Unauthorized");
+      throw new ConvexError("Unauthorized 1");
     }
 
     const organizationId = (User.organization_id ?? undefined) as string | undefined;
@@ -28,7 +28,7 @@ export const get = query({
     const User = await ctx.auth.getUserIdentity();
 
     if (!User) {
-      throw new ConvexError("Unauthorized");
+      throw new ConvexError("Unauthorized 2");
     }
 
     const organizationId = (User.organization_id ?? undefined) as | string | undefined;
@@ -77,7 +77,7 @@ export const removeById = mutation({
     const User = await ctx.auth.getUserIdentity();
     
     if (!User) {
-      throw new ConvexError("Unauthorized");
+      throw new ConvexError("Unauthorized 3");
     }
     
     const document = await ctx.db.get(args.id);
@@ -91,7 +91,7 @@ export const removeById = mutation({
     const isOrganizationMember = !!(document.organizationId && document.organizationId === organizationId)
     
     if (!isOwner && !isOrganizationMember) {
-      throw new ConvexError("Unauthorized: You are not the owner or a member of this document's organization");
+      throw new ConvexError("Unauthorized 4: You are not the owner or a member of this document's organization");
     }
     
     await ctx.db.delete(args.id);
@@ -104,7 +104,7 @@ export const updateById = mutation({
     const User = await ctx.auth.getUserIdentity();
     
     if (!User) {
-      throw new ConvexError("Unauthorized");
+      throw new ConvexError("Unauthorized 5 ");
     }
     
     const document = await ctx.db.get(args.id);
@@ -119,7 +119,7 @@ export const updateById = mutation({
     const isOrganizationMember =  !!(document.organizationId && document.organizationId === organizationId);
     
     if (!isOwner && !isOrganizationMember) {
-      throw new ConvexError("Unauthorized: You are not the owner of this document");
+      throw new ConvexError("Unauthorized 6: You are not the owner of this document");
     }
     
     await ctx.db.patch(args.id, { title: args.title });

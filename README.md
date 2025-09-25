@@ -1,4 +1,6 @@
-
+# To start 
+npm run dev
+npx convex dev
 # Docs Clone – Collaborative Text Editor
 
 Docs Clone is a real-time collaborative text editor inspired by Google Docs. It allows multiple users to create, edit, and share documents simultaneously with live updates. Built with Next.js, Convex, Liveblocks, and Tailwind CSS, this project demonstrates modern web development practices for building collaborative applications.
