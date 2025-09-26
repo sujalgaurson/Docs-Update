@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.25.4",
+    "@clerk/nextjs": "^6.32.2",
     "@liveblocks/client": "^3.2.0",
     "@liveblocks/node": "^3.2.0",
     "@liveblocks/react": "^3.2.0",
