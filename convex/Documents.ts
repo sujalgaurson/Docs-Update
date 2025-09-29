@@ -1,6 +1,7 @@
 import { mutation, query } from "./_generated/server";
 import { ConvexError, v } from "convex/values";
 import { paginationOptsValidator } from "convex/server";
+import { error } from "console";
 
 export const create = mutation({
   args: { title: v.optional(v.string()), initialContent: v.optional(v.string()) },
