@@ -1,7 +1,7 @@
 import { mutation, query } from "./_generated/server";
 import { ConvexError, v } from "convex/values";
 import { paginationOptsValidator } from "convex/server";
-import { error } from "console";
+
 
 export const create = mutation({
   args: { title: v.optional(v.string()), initialContent: v.optional(v.string()) },
@@ -26,9 +26,9 @@ export const create = mutation({
 export const get = query({
   args: { paginationOpts: paginationOptsValidator, search: v.optional(v.string()) },
   handler: async (ctx,{search, paginationOpts}) => {
-    console.log("message rohan 1", error);
+    console.log("message rohan 1");
     const User = await ctx.auth.getUserIdentity();
-    console.log("message rohan 2", error);
+    console.log("message rohan 2");
 
     if (!User) {
       throw new ConvexError("Unauthorized 2");
