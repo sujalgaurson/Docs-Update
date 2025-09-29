@@ -26,7 +26,9 @@ export const create = mutation({
 export const get = query({
   args: { paginationOpts: paginationOptsValidator, search: v.optional(v.string()) },
   handler: async (ctx,{search, paginationOpts}) => {
+    console.log("message rohan 1", error);
     const User = await ctx.auth.getUserIdentity();
+    console.log("message rohan 2", error);
 
     if (!User) {
       throw new ConvexError("Unauthorized 2");
